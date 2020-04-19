@@ -1,0 +1,39 @@
+Task 1
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   50.81%  46.404ms         1  46.404ms  46.404ms  46.404ms  [CUDA memcpy HtoD]
+                   48.02%  43.855ms         1  43.855ms  43.855ms  43.855ms  [CUDA memcpy DtoH]
+                    1.17%  1.0702ms         1  1.0702ms  1.0702ms  1.0702ms  kernel_compute(float*, float*, int)
+      API calls:   80.65%  428.01ms         2  214.01ms  359.39us  427.65ms  cudaMalloc
+                   17.56%  93.192ms         2  46.596ms  45.130ms  48.062ms  cudaMemcpy
+                    1.35%  7.1572ms         2  3.5786ms  615.82us  6.5414ms  cudaFree
+                    0.23%  1.1995ms       188  6.3800us     320ns  236.34us  cuDeviceGetAttribute
+                    0.14%  740.09us         2  370.04us  365.54us  374.55us  cuDeviceTotalMem
+                    0.05%  260.13us         1  260.13us  260.13us  260.13us  cudaLaunch
+                    0.02%  107.61us         2  53.806us  49.773us  57.840us  cuDeviceGetName
+                    0.00%  13.299us         3  4.4330us     322ns  11.843us  cudaSetupArgument
+                    0.00%  5.5410us         4  1.3850us     415ns  3.5200us  cuDeviceGet
+                    0.00%  3.4940us         3  1.1640us     330ns  2.2960us  cuDeviceGetCount
+                    0.00%  2.9200us         1  2.9200us  2.9200us  2.9200us  cudaConfigureCall
+
+
+Vs. 
+
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  1.0717ms         1  1.0717ms  1.0717ms  1.0717ms  kernel_compute(float*, float*, int)
+      API calls:   94.07%  468.59ms         2  234.30ms  7.1956ms  461.40ms  cudaMallocManaged
+                    3.20%  15.942ms         2  7.9708ms  7.5728ms  8.3688ms  cudaFree
+                    2.34%  11.652ms         1  11.652ms  11.652ms  11.652ms  cudaLaunch
+                    0.24%  1.1801ms       188  6.2760us     262ns  238.14us  cuDeviceGetAttribute
+                    0.13%  648.69us         2  324.35us  323.33us  325.36us  cuDeviceTotalMem
+                    0.02%  99.216us         2  49.608us  48.738us  50.478us  cuDeviceGetName
+                    0.00%  8.6150us         3  2.8710us     244ns  6.9390us  cudaSetupArgument
+                    0.00%  4.8880us         4  1.2220us     337ns  2.8170us  cuDeviceGet
+                    0.00%  4.2600us         1  4.2600us  4.2600us  4.2600us  cudaConfigureCall
+                    0.00%  3.6940us         3  1.2310us     275ns  2.6050us  cuDeviceGetCount
+
+==46676== Unified Memory profiling result:
+Device "Tesla K40m (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      33  1.9394MB  256.00KB  2.0000MB  64.00000MB  10.98426ms  Host To Device
+     390  168.04KB  4.0000KB  0.9961MB  64.00000MB  12.96790ms  Device To Host
+Total CPU Page faults: 195
